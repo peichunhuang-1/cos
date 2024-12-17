@@ -1,0 +1,41 @@
+syntax = "proto3";
+package cos_core;
+
+import "google/protobuf/empty.proto";
+
+service NodeService {
+  rpc sayHello (sayHelloRequest) returns (sayHelloReply) {}
+  rpc advertise (PublisherRequest) returns (google.protobuf.Empty) {}
+  rpc subscribe (SubscriberRequest) returns (google.protobuf.Empty) {}
+  rpc authorize (AuthorizeRequest) returns (google.protobuf.Empty) {}
+}
+
+message sayHelloRequest {
+  string        node = 1;
+}
+
+message sayHelloReply {
+  string        node = 1;
+}
+
+message PublisherRequest {
+  string        node = 1;
+  string        topic = 2;
+  string        type_url = 3;
+}
+
+message SubscriberRequest {
+  string        node = 1;
+  string        topic = 2;
+  string        srv_ip = 3;
+  int32         srv_port = 4;
+  string        type_url = 5;
+}
+
+message AuthorizeRequest {
+  string        node = 1;
+  string        topic = 2;
+  string        clt_ip = 3;
+  int32         clt_port = 4;
+  string        type_url = 5;
+}

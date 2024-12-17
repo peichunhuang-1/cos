@@ -1,0 +1,28 @@
+syntax = "proto3";
+package geometry_msgs;
+import "std.proto";
+message TransformF {
+    std_msgs.Header     header = 1;
+    string              child_frame_id = 2;
+    Vector3F            transition = 3;
+    Vector4F            rotation = 4;
+}
+
+message TransformD {
+    std_msgs.Header     header = 1;
+    string              child_frame_id = 2;
+    std_msgs.Vector3D   transition = 3;
+    std_msgs.Vector4D   rotation = 4;
+}
+
+message PointCloudF {
+    std_msgs.Header     header = 1;
+    repeated float      positions = 2; // xyz...xyz
+    repeated float      colors = 3; // rgb...rgb
+}
+
+message PointCloudD {
+    std_msgs.Header     header = 1;
+    repeated double     positions = 2; // xyz...xyz
+    repeated float      colors = 3; // rgb...rgb
+}
